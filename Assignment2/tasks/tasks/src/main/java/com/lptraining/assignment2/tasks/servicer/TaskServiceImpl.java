@@ -1,8 +1,9 @@
 package com.lptraining.assignment2.tasks.servicer;
 
-import com.lptraining.assignment2.commons.models.Project;
-import com.lptraining.assignment2.commons.models.Task;
-import com.lptraining.assignment2.commons.models.TaskWithProject;
+import com.lptraining.assignment2.commons.models.project.Project;
+import com.lptraining.assignment2.commons.models.responsemodels.TaskUnderProject;
+import com.lptraining.assignment2.commons.models.task.Task;
+import com.lptraining.assignment2.commons.models.responsemodels.TaskWithProject;
 import com.lptraining.assignment2.tasks.exceptions.ProjectNotActive;
 import com.lptraining.assignment2.tasks.exceptions.ProjectNotExists;
 import com.lptraining.assignment2.tasks.repositories.TaskRepository;
@@ -113,8 +114,9 @@ public class TaskServiceImpl implements TaskService {
 
     private Project getProjectById(int id) {
         String uri = "http://localhost:8080/projects/" + id;
-        Project project = restTemplate.getForObject(uri, Project.class);
-        System.out.println(project);
-        return project;
+        TaskUnderProject project = restTemplate.getForObject(uri, TaskUnderProject.class);
+        System.out.println(uri);
+        System.out.println(project.getProject());
+        return project.getProject();
     }
 }

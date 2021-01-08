@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
-@EntityScan(basePackages = "com.lptraining.assignment2.commons.models")
+@EntityScan(basePackages = {"com.lptraining.assignment2.commons.models.task","com.lptraining.assignment2.commons.models.responsemodels"})
 public class TasksApplication {
 
 	public static void main(String[] args) {

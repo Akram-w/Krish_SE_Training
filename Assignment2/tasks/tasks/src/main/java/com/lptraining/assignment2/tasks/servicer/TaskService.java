@@ -1,7 +1,7 @@
 package com.lptraining.assignment2.tasks.servicer;
 
-import com.lptraining.assignment2.commons.models.Task;
-import com.lptraining.assignment2.commons.models.TaskWithProject;
+import com.lptraining.assignment2.commons.models.task.Task;
+import com.lptraining.assignment2.commons.models.responsemodels.TaskWithProject;
 import com.lptraining.assignment2.tasks.exceptions.ProjectNotActive;
 import com.lptraining.assignment2.tasks.exceptions.ProjectNotExists;
 

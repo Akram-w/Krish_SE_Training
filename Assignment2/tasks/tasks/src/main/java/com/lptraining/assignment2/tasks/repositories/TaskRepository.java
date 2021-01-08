@@ -1,6 +1,6 @@
 package com.lptraining.assignment2.tasks.repositories;
 
-import com.lptraining.assignment2.commons.models.Task;
+import com.lptraining.assignment2.commons.models.task.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDate;

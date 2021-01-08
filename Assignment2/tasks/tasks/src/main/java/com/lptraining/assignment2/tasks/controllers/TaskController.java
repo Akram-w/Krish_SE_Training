@@ -1,7 +1,7 @@
 package com.lptraining.assignment2.tasks.controllers;
 
-import com.lptraining.assignment2.commons.models.Task;
-import com.lptraining.assignment2.commons.models.TaskWithProject;
+import com.lptraining.assignment2.commons.models.task.Task;
+import com.lptraining.assignment2.commons.models.responsemodels.TaskWithProject;
 import com.lptraining.assignment2.tasks.exceptions.ProjectNotActive;
 import com.lptraining.assignment2.tasks.exceptions.ProjectNotExists;
 import com.lptraining.assignment2.tasks.servicer.TaskService;
@@ -25,14 +25,14 @@ public class TaskController {
         saving task by id
     **/
     @PostMapping(value = "/tasks")
-    public ResponseEntity<Task> save(@RequestBody Task task) {
+    public ResponseEntity save(@RequestBody Task task) {
         try {
             Task responseTask = taskService.save(task);
-            return ResponseEntity.ok().body(responseTask);
+            return ResponseEntity.status(HttpStatus.OK).body(responseTask);
         } catch (ProjectNotActive throwables) {
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Given task's project is Not-Active");
         } catch (ProjectNotExists throwables) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Given task's project is Not-Active");
         }
     }
 
@@ -40,14 +40,14 @@ public class TaskController {
            update task by id
     **/
     @PutMapping(value = "/tasks/{id}")
-    public ResponseEntity<Task> update(@RequestBody Task task, @PathVariable int id) {
+    public ResponseEntity update(@RequestBody Task task, @PathVariable int id) {
         try {
             Task responseTask = taskService.update(task, id);
             return ResponseEntity.ok().body(responseTask);
         } catch (ProjectNotActive throwables) {
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Given tasks project id is Not-Active");
         } catch (ProjectNotExists throwables) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Given tasks project Not-Found");
         }
     }
 
@@ -63,12 +63,12 @@ public class TaskController {
             fetch task by taskId
     **/
     @GetMapping(value = "/tasks/{id}")
-    public ResponseEntity<TaskWithProject> findTaskById(@PathVariable int id) {
+    public ResponseEntity findTaskById(@PathVariable int id) {
         TaskWithProject fetchedTask = taskService.fetchTaskById(id);
         if (fetchedTask == null) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("couldn't find task from given taskId");
         } else {
-            return ResponseEntity.ok().body(fetchedTask);
+            return ResponseEntity.status(HttpStatus.OK).body(fetchedTask);
         }
     }
 
@@ -76,13 +76,13 @@ public class TaskController {
             fetch  all tasks by taskEndDate
     **/
     @GetMapping(value = "/tasks", params = "endDate")
-    public ResponseEntity<List<Task>> getAllTaskByEndDate(@RequestParam(value = "endDate") String endDate) {
+    public ResponseEntity getAllTaskByEndDate(@RequestParam(value = "endDate") String endDate) {
         System.out.println(endDate);
         try {
             List<Task> allTaskWithEndDate = taskService.getAllTaskWithEndDate(LocalDate.parse(endDate));
             return ResponseEntity.ok().body(allTaskWithEndDate);
         } catch (DateTimeParseException ex) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Given Date is not valid");
         }
 
     }
@@ -121,9 +121,9 @@ public class TaskController {
     public ResponseEntity removeTask(@PathVariable int id) {
         try {
             taskService.removeTaskById(id);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.status(HttpStatus.OK).body("Task removed");
         } catch (EmptyResultDataAccessException erda) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Couldn't find given task");
         }
     }
 
