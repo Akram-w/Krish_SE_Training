@@ -1,0 +1,483 @@
+{
+	"info": {
+		"_postman_id": "768ab216-56e7-4160-bb9c-10accfbd4cde",
+		"name": "Assignment2Postman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "project",
+			"item": [
+				{
+					"name": "save project",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"projectName\": \"fifth\",\r\n    \"projectLeadName\" : \"Krish\",\r\n    \"projectDescription\" : \"This is the fifth\",\r\n    \"projectEndDate\" : \"2022-10-21\",\r\n    \"isActive\" : \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/projects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update project",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"projectName\": \"ww2\",\r\n    \"projectLeadName\" : \"Jane\",\r\n    \"projectDescription\" : \"This is the third\",\r\n    \"projectEndDate\" : \"2023-10-21\",\r\n    \"isActive\" : \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/projects/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"projects",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete project",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/projects/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"projects",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetchAll projects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/projects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetchById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/projects/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"projects",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "isActiveProject",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/projects/5/isActive",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"projects",
+								"5",
+								"isActive"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetch all project by endDate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/projects?endDate=2021-09-10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"projects"
+							],
+							"query": [
+								{
+									"key": "endDate",
+									"value": "2021-09-10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetch all projects by status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/projects?status=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"projects"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tasks",
+			"item": [
+				{
+					"name": "save task",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"taskName\": \"task fs\",\r\n    \"taskDescription\" : \"this is the third fs\",\r\n    \"taskEndDate\" : \"2022-06-10\",\r\n    \"isActive\" : \"false\",\r\n    \"projectId\": 12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8191/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saving non existing project",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"taskName\": \"task three\",\r\n    \"taskDescription\" : \"this is the third task\",\r\n    \"taskEndDate\" : \"2022-06-10\",\r\n    \"isActive\" : \"true\",\r\n    \"projectId\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8191/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saving not active project",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"taskName\": \"task three\",\r\n    \"taskDescription\" : \"this is the third task\",\r\n    \"taskEndDate\" : \"2022-06-10\",\r\n    \"isActive\" : \"true\",\r\n    \"projectId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8191/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update task",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"taskName\": \"task four\",\r\n    \"taskDescription\" : \"this is the fourth task\",\r\n    \"taskEndDate\" : \"2022-05-10\",\r\n    \"isActive\" : \"true\",\r\n    \"projectId\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8191/tasks/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"tasks",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetch all tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8191/tasks/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"tasks",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetch task by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8191/tasks/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"tasks",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove task",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8191/tasks/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"tasks",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetch All tasks with  endDate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8191/tasks?endDate=2022-06-10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "endDate",
+									"value": "2022-06-10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetch All task by status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8191/tasks?status=false",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetch all task by project id and status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8191/tasks?projectId=3&status=false",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "projectId",
+									"value": "3"
+								},
+								{
+									"key": "status",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetch all task by project id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8191/tasks?projectId=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "projectId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
