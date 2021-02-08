@@ -1,4 +1,4 @@
-package com.lptraining;
+package com.training;
 
 public class Properties {
 

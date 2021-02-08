@@ -8,7 +8,7 @@
 		<version>2.4.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.lptraining.assignment2.</groupId>
+	<groupId>com.training.assignment2.</groupId>
 	<artifactId>projects</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>projects</name>
@@ -36,7 +36,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.lptraining.assignment2</groupId>
+			<groupId>com.training.assignment2</groupId>
 			<artifactId>assignment2-commons</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
